@@ -79,3 +79,46 @@ gridButton.addEventListener("click", () => {
         container.appendChild(div);
     }
 });
+function checker(elementId) {
+    let gridColumns = document.querySelectorAll(".gridCol");
+    gridColumns.forEach((element) => {
+        if (elementId == element.id) {
+            if (draw && !erase) {
+                element.style.backgroundColor = colorButton.ariaValueMax;
+            } else if (draw && erase) {
+                element.style.backgroundColor = "transparent";
+            }
+        }
+    });
+}
+
+// clear grid
+clearGridButton.addEventListener("click", () => {
+    container.innerHTML = "";
+});
+
+// erase button
+erasebtn.addEventListener("click", () => {
+    erase = true;
+});
+
+// paint button
+paintBtn.addEventListener("click", () => {
+    erase = false;
+});
+
+// display grid width and height
+gridWidth.addEventListener("input", () => {
+    widthValue.innerHTML = 
+        gridWidth.value < 9 ? `0${gridWidth.value}` : gridWidth.value;
+});
+
+gridHeight.addEventListener("input", () => {
+    heightValue.innerHTML =
+    gridHeight.value < 9 ? `0${gridHeight.value}` : gridHeight.value;
+});
+
+window.onload = () => {
+    gridWidth.value = 0;
+    gridHeight.value = 0;
+};
