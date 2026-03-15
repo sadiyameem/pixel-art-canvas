@@ -1,13 +1,13 @@
 let container = document.querySelector(".container");
-let gridButton = document.querySelector("submit-grid");
-let clearGridButton = document.querySelector("clear-grid");
-let gridWidth = document.querySelector("width-range");
-let gridHeight = document.querySelector("height-range");
-let colorButton = document.querySelector("color-input");
-let erasebtn = document.querySelector("erase-btn");
-let paintBtn = document.querySelector("paint-btn");
-let widthValue = document.querySelector("width-value");
-let heightValue = document.querySelector("height-value");
+let gridButton = document.getElementById("submit-grid");
+let clearGridButton = document.getElementById("clear-grid");
+let gridWidth = document.getElementById("width-range");
+let gridHeight = document.getElementById("height-range");
+let colorButton = document.getElementById("color-input");
+let erasebtn = document.getElementById("erase-btn");
+let paintBtn = document.getElementById("paint-btn");
+let widthValue = document.getElementById("width-value");
+let heightValue = document.getElementById("height-value");
 
 let events = {
     mouse: {
@@ -18,7 +18,7 @@ let events = {
     touch: {
         down: "touchstart",
         move: "touchmove",
-        up: "touchand",
+        up: "touchend",
     },
 };
 
@@ -45,11 +45,11 @@ isTouchDevice();
 gridButton.addEventListener("click", () => {
     container.innerHTML = "";
     let count = 0;
-    for (let i = 0; i < gridHeight.ariaValueMax; i++) {
+    for (let i = 0; i < gridHeight.value; i++) {
         count += 2;
         let div = document.createElement("div");
         div.classList.add("gridRow");
-        for (let j = 0; j < gridWidth.ariaValueMax; j++) {
+        for (let j = 0; j < gridWidth.value; j++) {
             count += 2;
             let col = document.createElement("div");
             col.classList.add("gridCol");
@@ -60,7 +60,7 @@ gridButton.addEventListener("click", () => {
                 if (erase) {
                     col.style.backgroundColor = "transparent";
                 } else {
-                    col.style.backgroundColor = colorButton.ariaValueMax;
+                    col.style.backgroundColor = colorButton.value;
                 }
             });
 
@@ -84,7 +84,7 @@ function checker(elementId) {
     gridColumns.forEach((element) => {
         if (elementId == element.id) {
             if (draw && !erase) {
-                element.style.backgroundColor = colorButton.ariaValueMax;
+                element.style.backgroundColor = colorButton.value;
             } else if (draw && erase) {
                 element.style.backgroundColor = "transparent";
             }
