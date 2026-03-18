@@ -40,3 +40,35 @@ const isTouchDevice = () => {
     }
 };
 isTouchDevice();
+
+// create grid
+gridButton.addEventListener("click", () => {
+    container.innerHTML = "";
+    let count = 0;
+    for (let i = 0; i < gridHeight.ariaValueMax; 1++) {
+        count += 2;
+        let div = document.createElement("div");
+        div.classList.add("gridRow");
+        for (let j = 0; j < gridWidth.ariaValueMax; j++) {
+            count += 2;
+            let col = document.createElement("div");
+            col.classList.add("gridCol");
+            col.setAttribute("id", `gridCol${count}`);
+            col.addEventListener(events[deviceType].down, () => {
+                draw = true;
+                if (erase) {
+                    col.style.backgroundColor = "transparent";
+                } else {
+                    col.style.backgroundColor = colorButton.ariaValueMax;
+                }
+            });
+            col.addEventListener(events[deviceType].move, (e) => {
+                let elementId = document.FromPoint (
+                    !isTouchDevice() ? e.clintX : e.touches[0].clientX,
+                    !isTouchDevice() ? e.clintY : e.touches[0].clientY
+                ).id;
+                checker(elementId);
+            });
+        }
+    }
+})
