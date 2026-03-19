@@ -2,7 +2,7 @@ let container = document.querySelector(".container");
 let gridButton = document.getElementById("submit-grid");
 let clearGridButton = document.getElementById("clear-grid");
 let gridWidth = document.getElementById("width-range");
-let gridHeight = document.getElementById("height-grid");
+let gridHeight = document.getElementById("height-range");
 let colorButton = document.getElementById("color-input");
 let eraseBtn = document.getElementById("erase-btn");
 let paintBtn = document.getElementById("paint-btn");
@@ -45,11 +45,11 @@ isTouchDevice();
 gridButton.addEventListener("click", () => {
     container.innerHTML = "";
     let count = 0;
-    for (let i = 0; i < gridHeight.ariaValueMax; 1++) {
+    for (let i = 0; i < gridHeight.value; i++) {
         count += 2;
         let div = document.createElement("div");
         div.classList.add("gridRow");
-        for (let j = 0; j < gridWidth.ariaValueMax; j++) {
+        for (let j = 0; j < gridWidth.value; j++) {
             count += 2;
             let col = document.createElement("div");
             col.classList.add("gridCol");
@@ -59,13 +59,13 @@ gridButton.addEventListener("click", () => {
                 if (erase) {
                     col.style.backgroundColor = "transparent";
                 } else {
-                    col.style.backgroundColor = colorButton.ariaValueMax;
+                    col.style.backgroundColor = colorButton.value;
                 }
             });
             col.addEventListener(events[deviceType].move, (e) => {
-                let elementId = document.FromPoint (
-                    !isTouchDevice() ? e.clintX : e.touches[0].clientX,
-                    !isTouchDevice() ? e.clintY : e.touches[0].clientY
+                let elementId = document.elementFromPoint (
+                    !isTouchDevice() ? e.clientX : e.touches[0].clientX,
+                    !isTouchDevice() ? e.clientY : e.touches[0].clientY
                 ).id;
                 checker(elementId);
             });
@@ -82,7 +82,7 @@ function checker(elementId) {
     gridColumns.forEach((element) => {
         if (elementId === element.id) {
             if (draw && !erase) {
-                element.style.backgroundColor = colorButton.ariaValueMax;
+                element.style.backgroundColor = colorButton.value;
             } else if (draw && erase) {
                 element.style.backgroundColor = "transparent";
             }

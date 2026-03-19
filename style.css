@@ -11,7 +11,7 @@ body {
 
 .wrapper {
     background-color: #ffffff;
-    width: 80vim;
+    width: 80vmin;
     position: absolute;
     transform: translate(-50%, -50%);
     top: 50%;
@@ -66,11 +66,18 @@ input[type="color"]::-moz-color-swatch {
 }
 
 .gridCol {
-    width: 1em;
-    height: 1em;
+    width: 20px;
+    height: 20px;
     border: 1px solid #ddd;
 }
 
 .gridRow {
     display: flex;
+}
+
+@media only screen and (max-width: 768px) {
+    .gridCol {
+        height: 0.8em;
+        width: 0.8em;
+    }
 }
