@@ -69,6 +69,23 @@ gridButton.addEventListener("click", () => {
                 ).id;
                 checker(elementId);
             });
+            col.addEventListener(events[deviceType].up, () => {
+                draw = false;
+            });
+            div.appendChild(col);
         }
+        container.appendChild(div);
     }
-})
+});
+function checker(elementId) {
+    let gridColumns = document.querySelectorAll(".gridCol");
+    gridColumns.forEach((element) => {
+        if (elementId === element.id) {
+            if (draw && !erase) {
+                element.style.backgroundColor = colorButton.ariaValueMax;
+            } else if (draw && erase) {
+                element.style.backgroundColor = "transparent";
+            }
+        }
+    });
+}
