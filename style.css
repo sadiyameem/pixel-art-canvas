@@ -6,7 +6,7 @@
 }
 
 body {
-    background-color: #f4c531;
+    background-color: lightcoral;
 }
 
 .wrapper {
@@ -38,10 +38,11 @@ span {
 }
 
 button {
-    background-color: #f4c531;
+    background-color: lightcoral;
     border: none;
     border-radius: 5px;
     padding: 5px;
+    font-weight: bold;
 }
 
 input[type="color"] {
