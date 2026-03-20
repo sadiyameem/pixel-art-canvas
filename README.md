@@ -23,3 +23,5 @@
 - The importance of ordering code for example the event listeners
 
 # Video
+https://github.com/user-attachments/assets/850dd984-1b21-42c9-854e-cb9e2278be0e
+
