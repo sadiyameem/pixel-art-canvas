@@ -2,7 +2,7 @@
 
 # Description
 - This is a simple drawing app that allows users to create their own grid and draw by clicking and dragging over the squares.
-- Users can choose colors, switch betwwen drawing and erasing, and resetting the grid.
+- Users can choose colors, switch between drawing and erasing, and resetting the grid.
 
 # Features
 - Create grid
